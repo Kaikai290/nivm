@@ -18,13 +18,19 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
+				capabilities = capabilities
+      })
+      
+      			vim.lsp.enable("lua_ls")
+
+			vim.lsp.config("clangd", {
 				capabilities = capabilities,
+				--cmd = {"C:/Users/angel/AppData/Local/nvim-data/mason/bin/clangd", "--query-driver=C:/msys64/ucrt64/bin/g++"}
 			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
+			vim.diagnostic.config({
+                		virtual_text = true
+            		})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
