@@ -28,10 +28,9 @@ return {
 
       vim.lsp.config("clangd", {
         capabilities = capabilities,
-        filetypes = { "cpp", "h" },
 
 
---        cmd =  {"clangd query-driver=C:/msys64/ucrt64/bin/g++.exe"}
+       --cmd =  {"--header-insertion=never"}
 
       })
       vim.lsp.enable("clangd")
